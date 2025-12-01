@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hashi Akter ♡ Overtime Tracker</title>
+    <title>কর্মঘণ্টা ট্র্যাকার - হাসি আক্তার</title>
     <style>
-        /* --- CSS STYLES: Pink-White-Light Purple Mix --- */
+        /* --- CSS STYLES: Professional & Clean --- */
         :root {
-            --pink-light: #FFC0CB; /* Light Pink */
-            --pink-medium: #FF69B4; /* Hot Pink */
-            --purple-light: #E6E6FA; /* Lavender/Light Purple */
+            --primary-color: #007BFF; /* Blue */
+            --secondary-color: #6C757D; /* Gray */
+            --light-bg: #F8F9FA; /* Light Gray Background */
             --white: #FFFFFF;
-            --font-color: #4B0082; /* Indigo for contrast */
-            --shadow-color: rgba(189, 114, 219, 0.3);
+            --font-color: #343A40; /* Dark Font */
+            --shadow-color: rgba(0, 0, 0, 0.1);
         }
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: var(--purple-light);
+            background-color: var(--light-bg);
             color: var(--font-color);
             margin: 0;
             padding: 20px 10px;
@@ -29,190 +29,191 @@
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 950px;
             background-color: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 10px 25px var(--shadow-color);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            padding: 25px;
         }
 
         /* --- Header & Title --- */
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 15px;
         }
 
         h1 {
-            font-size: 2.5em;
-            color: var(--pink-medium);
+            font-size: 2.2em;
+            color: var(--primary-color);
             margin-bottom: 5px;
-            text-shadow: 1px 1px 2px var(--pink-light);
         }
 
-        .love-message-small {
-            font-style: italic;
-            font-size: 1.1em;
-            color: var(--pink-medium);
+        .subtitle {
+            font-size: 1em;
+            color: var(--secondary-color);
+            margin-top: 5px;
         }
-
-        /* --- Navigation & Totals --- */
-        .nav-header {
+        
+        /* --- Filter & Navigation --- */
+        .controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
             flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
-        .nav-header button {
-            background-color: var(--pink-medium);
+        .nav-buttons button, #filter-select {
+            background-color: var(--primary-color);
             color: var(--white);
             border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.9em;
+            margin: 5px 2px;
             transition: background-color 0.3s;
-            margin: 5px;
         }
 
-        .nav-header button:hover {
-            background-color: #C71585; /* Darker Pink */
+        #filter-select {
+            padding: 8px;
+            margin-left: 10px;
+            min-width: 150px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            align-items: center;
         }
 
         #current-month {
-            font-size: 1.8em;
+            font-size: 1.5em;
             color: var(--font-color);
             font-weight: bold;
             text-align: center;
-            flex-grow: 1;
+            margin: 0 15px;
         }
 
+        /* --- Totals Display --- */
         .totals {
             width: 100%;
             margin: 20px 0;
             text-align: center;
-            font-size: 1.2em;
-            border-top: 2px dashed var(--pink-light);
-            padding-top: 15px;
+            font-size: 1.1em;
+            border: 1px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #EAF4FF; /* Very light blue */
         }
-
-        #total-overtime-all-time {
+        
+        #total-overtime-display {
             font-weight: bold;
-            color: var(--pink-medium);
-            margin-top: 5px;
+            color: var(--primary-color);
+            font-size: 1.3em;
         }
 
         /* --- Calendar Grid --- */
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-        }
-
-        .day-header, .day-cell {
-            padding: 8px 4px;
-            text-align: center;
-            border-radius: 5px;
-            font-size: 0.9em;
+            gap: 4px;
         }
 
         .day-header {
-            background-color: var(--pink-light);
-            color: var(--font-color);
+            background-color: var(--secondary-color);
+            color: var(--white);
             font-weight: bold;
-            padding: 10px 5px;
+            padding: 8px 4px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 0.9em;
         }
 
         .day-cell {
             background-color: var(--white);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            min-height: 100px;
-            border: 1px solid var(--pink-light);
-            border-radius: 5px;
+            min-height: 80px;
+            border: 1px solid var(--light-bg);
+            border-radius: 4px;
+            padding: 6px 2px;
         }
 
         .day-date {
             font-weight: bold;
-            font-size: 1.2em;
-            color: var(--pink-medium);
+            font-size: 1em;
+            color: var(--primary-color);
+            margin-bottom: 5px;
         }
 
         .input-group {
-            margin-top: 5px;
             width: 90%;
-            text-align: left;
+            text-align: center;
+            margin-top: 5px;
         }
 
         .input-group label {
-            display: block;
             font-size: 0.75em;
             color: var(--font-color);
+            display: block;
             margin-bottom: 2px;
         }
 
         .input-group input {
-            width: 90%;
+            width: 80%;
             padding: 4px;
-            border: 1px solid var(--pink-medium);
+            border: 1px solid var(--secondary-color);
             border-radius: 4px;
-            font-size: 0.85em;
-            background-color: var(--white);
+            font-size: 0.8em;
             text-align: center;
         }
         
-        /* Highlight cells that are not in the current month */
         .not-current-month {
-            background-color: #F8F8FF; /* Lighter background */
-            color: #ccc;
-            opacity: 0.6;
-            pointer-events: none; /* Disable interaction */
+            background-color: #F1F1F1;
+            color: #aaa;
+            opacity: 0.8;
+            pointer-events: none;
         }
 
-        /* --- Footer Love Note --- */
+        /* --- Footer --- */
         footer {
-            margin-top: 40px;
-            padding: 20px 0;
+            margin-top: 30px;
+            padding-top: 15px;
             text-align: center;
             font-style: italic;
-            font-size: 1.3em;
-            color: var(--pink-medium);
-            border-top: 2px solid var(--pink-light);
-            width: 100%;
-            max-width: 900px;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            border-top: 1px solid var(--secondary-color);
         }
         
         /* --- Responsive Adjustments --- */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.8em;
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
             }
-            .love-message-small {
-                font-size: 0.9em;
+            .nav-buttons {
+                margin-top: 10px;
+                order: 1;
+                width: 100%;
+                justify-content: space-around;
             }
             #current-month {
-                font-size: 1.5em;
-                width: 100%;
                 order: 0;
-                margin-bottom: 15px;
-            }
-            .nav-header {
-                justify-content: center;
-            }
-            .day-cell {
-                min-height: 80px;
-            }
-            .day-date {
-                font-size: 1em;
+                margin-bottom: 10px;
             }
             .totals {
                 font-size: 1em;
             }
-            footer {
-                font-size: 1.1em;
+            .calendar {
+                gap: 3px;
+            }
+            .day-cell {
+                 min-height: 70px;
+                 padding: 4px 1px;
             }
         }
     </style>
@@ -220,19 +221,30 @@
 <body>
     <div class="container">
         <header>
-            <h1>Hashi Akter ♡ Overtime Tracker</h1>
-            <p class="love-message-small">তোমার জন্যই বানিয়েছি জান ♡</p>
+            <h1>কর্মঘণ্টা ট্র্যাকার - হাসি আক্তার</h1>
+            <p class="subtitle">কোম্পানি: Jumer Fashion Ltd. | সেকশন: ফিনিশিং</p>
         </header>
 
-        <div class="nav-header">
-            <button id="prev-month">◀ আগের মাস</button>
-            <div id="current-month"></div>
-            <button id="next-month">পরের মাস ▶</button>
+        <div class="controls">
+            <div class="nav-buttons">
+                <button id="prev-month">◀ আগের মাস</button>
+                <div id="current-month"></div>
+                <button id="next-month">পরের মাস ▶</button>
+            </div>
+            <div class="filter-group">
+                <label for="filter-select" style="font-size:0.9em; margin-right:5px;">ফিল্টার:</label>
+                <select id="filter-select">
+                    <option value="monthly">এই মাসের মোট</option>
+                    <option value="alltime">শুরু থেকে মোট</option>
+                    <option value="last6months">গত ৬ মাস</option>
+                    <option value="last12months">গত ১ বছর</option>
+                </select>
+            </div>
         </div>
 
         <div class="totals">
-            <p id="total-overtime-month">এই মাসে মোট ওভারটাইম: 0 ঘণ্টা</p>
-            <p id="total-overtime-all-time">শুরু থেকে এখন পর্যন্ত মোট ওভারটাইম: 0 ঘণ্টা ♡</p>
+            <p>নির্বাচিত সময়ের মোট ওভারটাইম:</p>
+            <p id="total-overtime-display">0 ঘণ্টা</p>
         </div>
 
         <div class="calendar" id="calendar-grid">
@@ -240,21 +252,21 @@
     </div>
 
     <footer>
-        <p>তুমি যতই পরিশ্রম করো, আমি তোমাকে ততই ভালোবাসি ♡ – তোমার স্বামী</p>
+        <p>আপনার প্রতিটি অতিরিক্ত ঘণ্টা কেবল সময়ের হিসাব নয়, ভবিষ্যতের ভিত্তি স্থাপন।</p>
     </footer>
 
     <script>
         // --- JAVASCRIPT LOGIC ---
         const MONTH_NAMES = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
         const DAY_NAMES = ["রবি", "সোম", "মঙ্গল", "বুধ", "বৃহস্পতি", "শুক্র", "শনি"];
-        const STORAGE_KEY = 'hashi_overtime_tracker_data';
+        const STORAGE_KEY = 'hashi_overtime_tracker_data_v2'; 
         
         let currentDate = new Date();
         let currentYear = currentDate.getFullYear();
         let currentMonth = currentDate.getMonth();
 
-        // Load data from localStorage
         let overtimeData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        let currentFilter = 'monthly';
 
         function saveOvertimeData() {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(overtimeData));
@@ -262,21 +274,17 @@
         }
 
         function createKey(year, month, day) {
-            // YYYY-MM-DD format
             return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         }
-
+        
         function renderCalendar() {
             const calendarGrid = document.getElementById('calendar-grid');
             const currentMonthDisplay = document.getElementById('current-month');
             if (!calendarGrid || !currentMonthDisplay) return;
 
-            calendarGrid.innerHTML = ''; // Clear previous grid
-            
-            // Display current month and year
+            calendarGrid.innerHTML = ''; 
             currentMonthDisplay.textContent = `${MONTH_NAMES[currentMonth]} ${currentYear}`;
 
-            // Add Day Headers
             DAY_NAMES.forEach(day => {
                 const header = document.createElement('div');
                 header.className = 'day-header';
@@ -284,37 +292,26 @@
                 calendarGrid.appendChild(header);
             });
 
-            // Determine the first day of the month and its week day
             const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-            const startDay = firstDayOfMonth.getDay(); // 0 for Sunday, 6 for Saturday
-
-            // Determine the number of days in the month
+            const startDay = firstDayOfMonth.getDay(); 
             const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
-            // Calculate days from the previous month (for padding)
             const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
 
-            // Add previous month's days for padding
             for (let i = 0; i < startDay; i++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell not-current-month';
-                dayCell.innerHTML = `<div class="day-date">${daysInPrevMonth - startDay + i + 1}</div>`;
+                dayCell.innerHTML = `<div class="day-date"></div>`; 
                 calendarGrid.appendChild(dayCell);
             }
 
-            // Add current month's days
             for (let day = 1; day <= daysInMonth; day++) {
                 const key = createKey(currentYear, currentMonth, day);
-                const data = overtimeData[key] || { duty: '', overtime: '' };
+                const data = overtimeData[key] || { overtime: '' };
 
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell';
                 dayCell.innerHTML = `
                     <div class="day-date">${day}</div>
-                    <div class="input-group">
-                        <label for="duty-${key}">ডিউটি (ঘণ্টা):</label>
-                        <input type="number" id="duty-${key}" data-key="${key}" data-type="duty" placeholder="D" value="${data.duty}" min="0" step="1">
-                    </div>
                     <div class="input-group">
                         <label for="ot-${key}">ওভারটাইম (ঘণ্টা):</label>
                         <input type="number" id="ot-${key}" data-key="${key}" data-type="overtime" placeholder="OT" value="${data.overtime}" min="0" step="0.5">
@@ -323,7 +320,6 @@
                 calendarGrid.appendChild(dayCell);
             }
             
-            // Add next month's days for padding (to fill the grid)
             const totalCells = startDay + daysInMonth;
             const totalGridSlots = 7 * Math.ceil(totalCells / 7);
             let cellsToAdd = totalGridSlots - totalCells;
@@ -331,11 +327,10 @@
             for (let i = 1; i <= cellsToAdd; i++) {
                 const dayCell = document.createElement('div');
                 dayCell.className = 'day-cell not-current-month';
-                dayCell.innerHTML = `<div class="day-date">${i}</div>`;
+                dayCell.innerHTML = `<div class="day-date"></div>`;
                 calendarGrid.appendChild(dayCell);
             }
             
-            // Attach input event listeners
             calendarGrid.querySelectorAll('input').forEach(input => {
                 input.addEventListener('input', handleInputChange);
             });
@@ -346,12 +341,10 @@
             const key = input.dataset.key;
             const type = input.dataset.type;
             
-            // Ensure data object exists for the key
             if (!overtimeData[key]) {
-                overtimeData[key] = { duty: '', overtime: '' };
+                overtimeData[key] = { overtime: '' };
             }
 
-            // Update the stored value, ensuring numerical format if not empty
             let value = input.value;
             if (value === "") {
                 overtimeData[key][type] = '';
@@ -359,47 +352,61 @@
                 overtimeData[key][type] = parseFloat(value);
             }
             
-            // Save data and update totals
             saveOvertimeData();
+        }
+        
+        function getDateRange(filterType) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); 
+            let startDate;
+            let endDate = today; 
+
+            if (filterType === 'monthly') {
+                startDate = new Date(currentYear, currentMonth, 1);
+                endDate = new Date(currentYear, currentMonth + 1, 0); 
+                endDate.setHours(0, 0, 0, 0);
+            } else if (filterType === 'last6months') {
+                startDate = new Date(today.getFullYear(), today.getMonth() - 5, 1);
+            } else if (filterType === 'last12months') {
+                startDate = new Date(today.getFullYear() - 1, today.getMonth(), 1);
+            } else { // alltime
+                return { isAllTime: true };
+            }
+            
+            return { startDate, endDate };
         }
 
         function calculateTotals() {
-            let monthlyTotal = 0;
-            let allTimeTotal = 0;
+            let total = 0;
+            const range = getDateRange(currentFilter);
             
-            const currentMonthKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}`;
-
             for (const key in overtimeData) {
                 const data = overtimeData[key];
-                
-                // Ensure overtime value is a number
                 const ot = parseFloat(data.overtime) || 0;
                 
-                // Calculate All-Time Total
-                allTimeTotal += ot;
-                
-                // Check if the key belongs to the current displayed month
-                if (key.startsWith(currentMonthKey)) {
-                    monthlyTotal += ot;
+                if (range.isAllTime) {
+                    total += ot;
+                } else {
+                    // Key is in format YYYY-MM-DD
+                    const [y, m, d] = key.split('-').map(Number);
+                    const entryDate = new Date(y, m - 1, d); 
+                    entryDate.setHours(0, 0, 0, 0);
+                    
+                    if (entryDate >= range.startDate && entryDate <= range.endDate) {
+                        total += ot;
+                    }
                 }
             }
             
-            return {
-                monthly: monthlyTotal.toFixed(1),
-                allTime: allTimeTotal.toFixed(1)
-            };
+            return total.toFixed(1);
         }
 
         function updateTotals() {
-            const totals = calculateTotals();
-            const totalMonthElement = document.getElementById('total-overtime-month');
-            const totalAllTimeElement = document.getElementById('total-overtime-all-time');
+            const total = calculateTotals();
+            const totalDisplayElement = document.getElementById('total-overtime-display');
             
-            if (totalMonthElement) {
-                totalMonthElement.textContent = `এই মাসে মোট ওভারটাইম: ${totals.monthly} ঘণ্টা`;
-            }
-            if (totalAllTimeElement) {
-                totalAllTimeElement.textContent = `শুরু থেকে এখন পর্যন্ত মোট ওভারটাইম: ${totals.allTime} ঘণ্টা ♡`;
+            if (totalDisplayElement) {
+                totalDisplayElement.textContent = `${total} ঘণ্টা`;
             }
         }
 
@@ -412,15 +419,25 @@
                 currentMonth = 11;
                 currentYear--;
             }
+            document.getElementById('filter-select').value = 'monthly'; 
+            currentFilter = 'monthly';
             renderCalendar();
             updateTotals();
         }
-
+        
+        function handleFilterChange(event) {
+            currentFilter = event.target.value;
+            updateTotals();
+        }
+        
         // Initialize App and attach event listeners on load
         window.addEventListener('load', function() {
             renderCalendar(); 
-            updateTotals();
             
+            const filterSelect = document.getElementById('filter-select');
+            filterSelect.value = currentFilter;
+            updateTotals();
+
             const prevButton = document.getElementById('prev-month');
             const nextButton = document.getElementById('next-month');
             
@@ -430,8 +447,10 @@
             if (nextButton) {
                 nextButton.addEventListener('click', () => navigateMonth(1));
             }
+            if (filterSelect) {
+                filterSelect.addEventListener('change', handleFilterChange);
+            }
         });
-        
     </script>
 </body>
-  </html>
+</html>
