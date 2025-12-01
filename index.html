@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>কর্মঘণ্টা ট্র্যাকার - হাসি আক্তার</title>
+    <title>Overtime Tracker - Hashi Akter</title>
     <style>
-        /* --- CSS STYLES: Professional & Clean --- */
+        /* --- CSS STYLES: Professional & Clean (English Naming) --- */
         :root {
             --primary-color: #007BFF; /* Blue */
             --secondary-color: #6C757D; /* Gray */
@@ -221,30 +221,30 @@
 <body>
     <div class="container">
         <header>
-            <h1>কর্মঘণ্টা ট্র্যাকার - হাসি আক্তার</h1>
-            <p class="subtitle">কোম্পানি: Jumer Fashion Ltd. | সেকশন: ফিনিশিং</p>
+            <h1>কর্মঘণ্টা ট্র্যাকার - Hashi Akter</h1>
+            <p class="subtitle">Company: Jumer Fashion Ltd. | Section: Finishing</p>
         </header>
 
         <div class="controls">
             <div class="nav-buttons">
-                <button id="prev-month">◀ আগের মাস</button>
+                <button id="prev-month">◀ Prev Month</button>
                 <div id="current-month"></div>
-                <button id="next-month">পরের মাস ▶</button>
+                <button id="next-month">Next Month ▶</button>
             </div>
             <div class="filter-group">
-                <label for="filter-select" style="font-size:0.9em; margin-right:5px;">ফিল্টার:</label>
+                <label for="filter-select" style="font-size:0.9em; margin-right:5px;">Filter:</label>
                 <select id="filter-select">
-                    <option value="monthly">এই মাসের মোট</option>
-                    <option value="alltime">শুরু থেকে মোট</option>
-                    <option value="last6months">গত ৬ মাস</option>
-                    <option value="last12months">গত ১ বছর</option>
+                    <option value="monthly">This Month Total</option>
+                    <option value="alltime">All Time Total</option>
+                    <option value="last6months">Last 6 Months</option>
+                    <option value="last12months">Last 1 Year</option>
                 </select>
             </div>
         </div>
 
         <div class="totals">
-            <p>নির্বাচিত সময়ের মোট ওভারটাইম:</p>
-            <p id="total-overtime-display">0 ঘণ্টা</p>
+            <p>Total Overtime in Selected Period:</p>
+            <p id="total-overtime-display">0 Hours</p>
         </div>
 
         <div class="calendar" id="calendar-grid">
@@ -257,8 +257,8 @@
 
     <script>
         // --- JAVASCRIPT LOGIC ---
-        const MONTH_NAMES = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
-        const DAY_NAMES = ["রবি", "সোম", "মঙ্গল", "বুধ", "বৃহস্পতি", "শুক্র", "শনি"];
+        const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // English days
         const STORAGE_KEY = 'hashi_overtime_tracker_data_v2'; 
         
         let currentDate = new Date();
@@ -313,7 +313,7 @@
                 dayCell.innerHTML = `
                     <div class="day-date">${day}</div>
                     <div class="input-group">
-                        <label for="ot-${key}">ওভারটাইম (ঘণ্টা):</label>
+                        <label for="ot-${key}">Overtime (Hours):</label>
                         <input type="number" id="ot-${key}" data-key="${key}" data-type="overtime" placeholder="OT" value="${data.overtime}" min="0" step="0.5">
                     </div>
                 `;
@@ -406,7 +406,7 @@
             const totalDisplayElement = document.getElementById('total-overtime-display');
             
             if (totalDisplayElement) {
-                totalDisplayElement.textContent = `${total} ঘণ্টা`;
+                totalDisplayElement.textContent = `${total} Hours`; // Changed to Hours
             }
         }
 
