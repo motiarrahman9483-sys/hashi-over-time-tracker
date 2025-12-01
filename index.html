@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overtime - Hashi Akter</title> 
     <style>
-        /* --- CSS STYLES: Professional & Clean (English Naming) --- */
+        /* --- CSS STYLES: Romantic/Soothing Theme --- */
         :root {
-            --primary-color: #007BFF; /* Blue */
-            --secondary-color: #6C757D; /* Gray */
-            --light-bg: #F8F9FA; /* Light Gray Background */
+            --primary-color: #E37383; /* Soft Rose/Pink */
+            --secondary-color: #A05260; /* Deep Rose for accents */
+            --light-bg: #FFF0F2; /* Very Light Pink Background */
             --white: #FFFFFF;
-            --font-color: #343A40; /* Dark Font */
-            --shadow-color: rgba(0, 0, 0, 0.1);
+            --font-color: #4C4C4C; /* Soft Dark Font */
+            --shadow-color: rgba(227, 115, 131, 0.2);
         }
 
         body {
@@ -77,6 +77,10 @@
             transition: background-color 0.3s;
         }
 
+        .nav-buttons button:hover, #filter-select:hover {
+            background-color: var(--secondary-color);
+        }
+
         #filter-select {
             padding: 8px;
             margin-left: 10px;
@@ -105,12 +109,12 @@
             border: 1px solid var(--primary-color);
             border-radius: 8px;
             padding: 10px;
-            background-color: #EAF4FF; /* Very light blue */
+            background-color: #FEEBEF; /* Very light rose */
         }
         
         #total-overtime-display {
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--secondary-color);
             font-size: 1.3em;
         }
 
@@ -138,7 +142,7 @@
             justify-content: flex-start;
             align-items: center;
             min-height: 80px;
-            border: 1px solid var(--light-bg);
+            border: 1px solid #FFE4E6; /* Lighter Rose border */
             border-radius: 4px;
             padding: 6px 2px;
         }
@@ -190,7 +194,7 @@
             border-top: 1px solid var(--secondary-color);
         }
         
-        /* --- Responsive Adjustments --- */
+        /* --- Responsive Adjustments (No change, standard) --- */
         @media (max-width: 768px) {
             .controls {
                 flex-direction: column;
@@ -256,7 +260,7 @@
     </footer>
 
     <script>
-        // --- JAVASCRIPT LOGIC ---
+        // --- JAVASCRIPT LOGIC (No change) ---
         const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; 
         const STORAGE_KEY = 'hashi_overtime_tracker_data_v2'; 
